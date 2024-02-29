@@ -1,8 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Transactions.css'
 
 const Transactions = ({ transactions, setTransactions }) => {
+  // A USESTATE TO HOLD TOTAL OF TRANSACTIONS
+  const [totalAmount, setTotalAmount] = useState(0);
+  // USEEFFECT TO CALCULATE
+  useEffect(() => {
+    let total = 0;
+    transactions.forEach(transaction => {
+      total += transaction.amount
+    });
+    setTotalAmount(total)
+  }), [transactions]
+
+  // CSS TOTAL CHANGER
+
+  let totalNum = ''
+  if (totalAmount > 100) {
+    totalNum = 'green'
+  } else if (totalAmount >= 0) {
+    totalNum = 'yellow'
+  } else {
+    totalNum = 'red'
+  }
+
   if (transactions.length === 0) return null;
 
   function handleDelete(id) {
@@ -16,6 +38,9 @@ const Transactions = ({ transactions, setTransactions }) => {
   return (
     <div className="transactions-container"> {/* Apply transactions container style */}
       <h1 className='transaction-header'>Transactions</h1>
+      <div className='total-amount'>
+        Total Amount: <span className={`${totalNum}`}>{totalAmount}</span>
+      </div>
       {transactions.map(({ id, item_name, amount, date, from, category }) => (
       <div className='transaction-item'>
       <div className="transaction-all-details" key={id}> {/* Apply transaction item style */}
@@ -33,7 +58,8 @@ const Transactions = ({ transactions, setTransactions }) => {
           <button className="transaction-button delete-button" onClick={() => handleDelete(id)}>Delete</button> 
       </div>
       </div>
-      ))}
+      ))} 
+      
     </div>
   );
 };

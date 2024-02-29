@@ -20,6 +20,7 @@ const TransactionDetails = () => {
         <p className="transaction-details-item"><b>Amount:</b> {transactionDetail.amount}</p>
         <p className="transaction-details-item"><b>From:</b> {transactionDetail.from}</p>
         <p className="transaction-details-item"><b>Category:</b> {transactionDetail.category}</p>
+        <p className="transaction-details-item"><b>Memo:</b> {transactionDetail.memo}</p>
       </div>
     );
   };

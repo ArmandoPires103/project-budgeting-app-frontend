@@ -19,6 +19,7 @@ const TransactionForm = ({setTransactions}) => {
 
     function handleSubmit(e){
         e.preventDefault();
+        transaction.amount = +transaction.amount
         if (id) {
             const options = {
               method: "PUT",
@@ -77,7 +78,7 @@ const TransactionForm = ({setTransactions}) => {
        type="text"
        id="item_name"
        name="item_name"
-       value={transaction.item_name || ""}
+       value={transaction.item_name}
        />
       </label>
       <label htmlFor="amount">

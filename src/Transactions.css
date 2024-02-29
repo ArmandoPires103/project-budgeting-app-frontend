@@ -63,3 +63,17 @@
 .transaction-header {
     text-align: center;
 }
+
+.green {
+    color: green;
+}
+.yellow {
+    color: yellow;
+}
+.red {
+    color: red;
+}
+.total-amount {
+    text-align: center;
+    font-size: 20px;
+}
