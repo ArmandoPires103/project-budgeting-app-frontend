@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 import {Routes, Route} from "react-router-dom"
 import './App.css'
 
-
 const App = () => {
   const [transactions, setTransactions] = useState([])
   const [toggleDetails, setToggleDetails] = useState({ show: false, id:null})
@@ -23,10 +22,9 @@ useEffect (() => {
   })
 }, [])
 
-  return (
+return (
   <div>
-    
-    <header className="w3-container w3-xlarge w3-padding-24">
+  <header className="w3-container w3-xlarge w3-padding-24">
      <a href="#" className="w3-left w3-button w3-white">
       Budgeting App
     </a>
@@ -35,8 +33,7 @@ useEffect (() => {
       Create Transaction
     </a>
     </Link>
-  
-    </header>
+  </header>
   
   <Routes>
     <Route path="/"
@@ -67,20 +64,17 @@ useEffect (() => {
         />
     }
     />
-     <Route
-          path="/new"
-          element={
-            <TransactionForm
-              edit={edit}
-              setEdit={setEdit}
-              setTransactions={setTransactions}
-              setToggleForm={setToggleForm}
-
-            />
-          }
-        />
+     <Route path="/new" element={
+      <TransactionForm
+        edit={edit}
+        setEdit={setEdit}
+        setTransactions={setTransactions}
+        setToggleForm={setToggleForm}
+      />
+    }
+      />
   </Routes>
-    </div>
+  </div>
   )
 }
 
