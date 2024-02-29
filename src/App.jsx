@@ -1,10 +1,17 @@
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import Transactions from './transactions'
+import Transactions from './Transactions'
+import TransactionDetails from './TransactionDetail'
+import TransactionForm from './TransactionForm'
+import { Link } from 'react-router-dom'
+import {Routes, Route} from "react-router-dom"
 
 const App = () => {
   const [transactions, setTransactions] = useState([])
+  const [toggleDetails, setToggleDetails] = useState({ show: false, id:null})
+  const [toggleForm, setToggleForm]= useState(false)
+  const [edit, setEdit] = useState({ show: false, id:null})
 
 useEffect (() => {
   fetch("http://localhost:4000/transactions")
@@ -18,10 +25,49 @@ useEffect (() => {
   return (
   <div>
     <h1>Budgeting App</h1>
+    
+      
+    <Link to="/new">
+      <button>Create Transaction</button>
+    </Link>
+  <Routes>
+    <Route path="/"
+    element={
     <Transactions 
       transactions={transactions} 
       setTransactions={setTransactions}
       />
+      }
+    />
+    <Route 
+      path="/:id" 
+      element={
+    <TransactionDetails 
+      toggleDetails={toggleDetails}
+      />
+    }
+    />
+    <Route path="/edit/:id" element={
+      <TransactionForm
+        edit={edit}
+        setEdit={setEdit}
+        setTransactions={setTransactions}
+        setToggleForm={setToggleForm}
+        />
+    }
+    />
+     <Route
+          path="/new"
+          element={
+            <TransactionForm
+              edit={edit}
+              setEdit={setEdit}
+              setTransactions={setTransactions}
+              setToggleForm={setToggleForm}
+            />
+          }
+        />
+  </Routes>
     </div>
   )
 }
