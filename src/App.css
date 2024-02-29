@@ -1,28 +1,25 @@
-
+/* HEADER */
 .w3-container {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     width: 100%;
   }
-  
-  .w3-xlarge {
+.w3-xlarge {
     font-size: 24px;
-  }
-  
-  .w3-padding-24 {
+}
+.w3-padding-24 {
     padding: 24px;
-  }
-  
-  .w3-left {
+}
+.w3-left {
     float: left;
-  }
+}
   
-  .w3-right {
+.w3-right {
     float: right;
-  }
+}
   
-  .w3-button {
+.w3-button {
     background-color: white;
     border: none;
     color: black;
@@ -33,9 +30,9 @@
     cursor: pointer;
     padding: 10px 20px;
     transition-duration: 0.4s;
-  }
+}
   
-  .w3-button:hover {
+.w3-button:hover {
     background-color: #f1f1f1;
-  }
+}
   

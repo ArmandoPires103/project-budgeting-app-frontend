@@ -1,0 +1,54 @@
+/* Style for the transactions container */
+.transactions-container {
+    margin-top: 20px;
+  }
+  
+/* Style for the transaction item */
+.transaction-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the transaction item's title */
+  .transaction-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the transaction details */
+  .transaction-details {
+    margin-bottom: 5px;
+  }
+  
+  /* Style for the buttons */
+  .transaction-button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    
+  }
+  
+  .transaction-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Style for the delete button */
+  .delete-button {
+    background-color: #dc3545;
+  }
+  
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  .transaction-header {
+    text-align: center;
+  }
