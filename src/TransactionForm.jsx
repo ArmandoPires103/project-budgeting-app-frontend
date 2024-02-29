@@ -2,16 +2,16 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const TransactionForm = ({setTransactions, setToggleForm}) => {
+const TransactionForm = ({setTransactions}) => {
     const navigate = useNavigate();
     const { id } = useParams();
 
     const [transaction, setTransaction] = useState({
-        item_name:"",
-        amount:"",
-        date:"",
-        from:"",
-        category:"",
+        item_name: "",
+        amount: "",
+        date: "",
+        from: "",
+        category: "",
     })
     function handleChange(e) {
         setTransaction({ ...transaction, [e.target.id]: e.target.value});
@@ -30,14 +30,15 @@ const TransactionForm = ({setTransactions, setToggleForm}) => {
               .then((res) => res.json())
               .then((data) => setTransactions(data.transactions))
               .then(() => navigate("/"));
-          } else {
+         
+            } else {
             const options = {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify(transaction),
             };
       
-            fetch("http://localhost:4000/transaction", options)
+            fetch("http://localhost:4000/transactions/", options)
               .then((res) => res.json())
               .then((data) => setTransactions(data.transactions))
               .then(() => navigate("/"));
@@ -52,7 +53,7 @@ const TransactionForm = ({setTransactions, setToggleForm}) => {
         if (id) {
           fetch(`http://localhost:4000/transactions/${id}`)
             .then((res) => res.json())
-            .then((data) => setBookmark(data.transaction));
+            .then((data) => setTransaction(data.transaction));
         } else {
           setTransaction({
             item_name:"",
@@ -71,13 +72,13 @@ const TransactionForm = ({setTransactions, setToggleForm}) => {
     <form onSubmit={handleSubmit}>
       <label htmlFor="item_name">
        Item Name:
-        <input
-          onChange={handleChange}
-          type="text"
-          id="name"
-          name="name"
-          value={transaction.item_name}
-        />
+       <input
+       onChange={handleChange}
+       type="text"
+       id="item_name"
+       name="item_name"
+       value={transaction.item_name || ""}
+       />
       </label>
       <label htmlFor="amount">
         Amount:

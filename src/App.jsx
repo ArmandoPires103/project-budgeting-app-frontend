@@ -17,7 +17,6 @@ useEffect (() => {
   fetch("http://localhost:4000/transactions")
   .then((res) => res.json())
   .then((data) => {
-    console.log(data);
     setTransactions(data.transactions);
   })
 }, [])
@@ -36,6 +35,9 @@ useEffect (() => {
     <Transactions 
       transactions={transactions} 
       setTransactions={setTransactions}
+      setToggleDetails={setToggleDetails}
+      edit={edit}
+      setEdit={setEdit}
       />
       }
     />
@@ -64,6 +66,7 @@ useEffect (() => {
               setEdit={setEdit}
               setTransactions={setTransactions}
               setToggleForm={setToggleForm}
+
             />
           }
         />
