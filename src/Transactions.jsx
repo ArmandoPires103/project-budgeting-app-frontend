@@ -17,18 +17,22 @@ const Transactions = ({ transactions, setTransactions }) => {
     <div className="transactions-container"> {/* Apply transactions container style */}
       <h1 className='transaction-header'>Transactions</h1>
       {transactions.map(({ id, item_name, amount, date, from, category }) => (
-        <div className="transaction-item" key={id}> {/* Apply transaction item style */}
+      <div className='transaction-item'>
+      <div className="transaction-all-details" key={id}> {/* Apply transaction item style */}
           <h3 className="transaction-title">Item Name: {item_name}</h3> {/* Apply transaction title style */}
           <p className="transaction-details">Date: {date}</p> {/* Apply transaction details style */}
           <p className="transaction-details">Amount: {amount}</p> {/* Apply transaction details style */}
+      </div>
+      <div className='transaction-buttons'>
           <Link to={`/${id}`}>
-            <button className="transaction-button">Details</button> {/* Apply transaction button style */}
+            <button className="transaction-button">Details</button> 
           </Link>
           <Link to={`/edit/${id}`}>
-            <button className="transaction-button">Edit</button> {/* Apply transaction button style */}
+            <button className="transaction-button">Edit</button> 
           </Link>
-          <button className="transaction-button delete-button" onClick={() => handleDelete(id)}>Delete</button> {/* Apply delete button style */}
-        </div>
+          <button className="transaction-button delete-button" onClick={() => handleDelete(id)}>Delete</button> 
+      </div>
+      </div>
       ))}
     </div>
   );

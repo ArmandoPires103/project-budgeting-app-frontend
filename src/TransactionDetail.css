@@ -1,0 +1,21 @@
+/* transactionDetails.css */
+.transaction-details-container {
+    margin-top: 20px;
+    text-align: center;
+    border: solid 4px;
+  }
+  
+  .transaction-details-title {
+    font-size: 44px;
+    margin-bottom: 10px;
+  }
+  
+  .transaction-details-item {
+    margin-top: 15px;
+    font-size: 24px;
+
+  }
+  
+  .transaction-details-item b {
+    font-weight: bold;
+  }

@@ -25,12 +25,14 @@ useEffect (() => {
 return (
   <div>
   <header className="w3-container w3-xlarge w3-padding-24">
+    <Link to="/">
      <a href="#" className="w3-left w3-button w3-white">
       Budgeting App
     </a>
+    </Link>
     <Link to="/new">
     <a href="#about" className="w3-right w3-button w3-white">
-      Create Transaction
+      Add Transaction
     </a>
     </Link>
   </header>
