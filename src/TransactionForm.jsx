@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import './TransactionForm.css'
 
 const TransactionForm = ({setTransactions}) => {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ const TransactionForm = ({setTransactions}) => {
 
 
   return (
-    <div>
+    <div className="transaction-form">
     <h1>Transaction Form</h1>
     <form onSubmit={handleSubmit}>
       <label htmlFor="item_name">

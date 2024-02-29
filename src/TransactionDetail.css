@@ -1,8 +1,12 @@
 /* transactionDetails.css */
 .transaction-details-container {
-    margin-top: 20px;
-    text-align: center;
-    border: solid 4px;
+  
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 60px;
+    max-width: 1200px;
+    width: 90vw;
+    border: 1px solid black;
   }
   
   .transaction-details-title {
