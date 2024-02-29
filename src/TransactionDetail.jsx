@@ -15,8 +15,10 @@ const TransactionDetails = () => {
   return (
     <div>
         <h1>transactionDetails</h1>
-        <p>{transactionDetail.item_name}</p>
-        <p>{transactionDetail.amount}</p>
+        <p><b>Item:</b>{transactionDetail.item_name}</p>
+        <p><b>Amount:</b>{transactionDetail.amount}</p>
+        <p><b>From:</b> {transactionDetail.from}</p>
+        <p><b>Category:</b> {transactionDetail.category}</p>
         </div>
   )
 }

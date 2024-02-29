@@ -6,6 +6,8 @@ import TransactionDetails from './TransactionDetail'
 import TransactionForm from './TransactionForm'
 import { Link } from 'react-router-dom'
 import {Routes, Route} from "react-router-dom"
+import './App.css'
+
 
 const App = () => {
   const [transactions, setTransactions] = useState([])
@@ -23,12 +25,19 @@ useEffect (() => {
 
   return (
   <div>
-    <h1>Budgeting App</h1>
     
-      
+    <header className="w3-container w3-xlarge w3-padding-24">
+     <a href="#" className="w3-left w3-button w3-white">
+      Budgeting App
+    </a>
     <Link to="/new">
-      <button>Create Transaction</button>
+    <a href="#about" className="w3-right w3-button w3-white">
+      Create Transaction
+    </a>
     </Link>
+  
+    </header>
+  
   <Routes>
     <Route path="/"
     element={
