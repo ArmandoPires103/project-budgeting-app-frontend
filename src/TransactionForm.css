@@ -1,7 +1,7 @@
 .transaction-form {
-    margin: 20px;
+  margin: auto;
+    margin-top: 60px;
     max-width: 1200px;
-    margin: 0 auto;
     width: 90vw;
     text-align: center;
   }

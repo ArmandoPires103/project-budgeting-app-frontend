@@ -13,6 +13,7 @@ const TransactionForm = ({setTransactions}) => {
         date: "",
         from: "",
         category: "",
+        memo: ""
     })
     function handleChange(e) {
         setTransaction({ ...transaction, [e.target.id]: e.target.value});
@@ -63,6 +64,7 @@ const TransactionForm = ({setTransactions}) => {
             date:"",
             from:"",
             category:"",
+            memo:""
           });
         }
       }, [id]);
@@ -120,6 +122,16 @@ const TransactionForm = ({setTransactions}) => {
           id="category"
           name="category"
           value={transaction.category}
+        />
+      </label>
+      <label htmlFor="memo">
+        Memo:
+        <input
+          onChange={handleChange}
+          type="text"
+          id="memo"
+          name="memo"
+          value={transaction.memo}
         />
       </label>
       <button>Submit</button>
