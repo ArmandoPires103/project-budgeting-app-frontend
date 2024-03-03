@@ -114,14 +114,14 @@ const TransactionForm = ({setTransactions}) => {
           value={transaction.from}
         />
       </label>
-      <label htmlFor="category">
+      <label htmlFor="spent">
         Category:
         <input
           onChange={handleChange}
           type="text"
-          id="category"
-          name="category"
-          value={transaction.category}
+          id="spent"
+          name="spent"
+          value={transaction.spent}
         />
       </label>
       <label htmlFor="memo">

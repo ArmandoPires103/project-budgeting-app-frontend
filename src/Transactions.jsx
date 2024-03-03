@@ -42,8 +42,8 @@ const Transactions = ({ transactions, setTransactions }) => {
         Total Amount: <span className={`${totalNum}`}>{totalAmount}</span>
       </div>
       {transactions.map(({ id, item_name, amount, date}) => (
-      <div className='transaction-item'>
-      <div className="transaction-all-details" key={id}> {/* Apply transaction item style */}
+      <div className='transaction-item' key={id}>
+      <div className="transaction-all-details" > {/* Apply transaction item style */}
           <h3 className="transaction-title">Item Name: {item_name}</h3> {/* Apply transaction title style */}
           <p className="transaction-details">Date: {date}</p> {/* Apply transaction details style */}
           <p className="transaction-details">Amount: {amount}</p> {/* Apply transaction details style */}

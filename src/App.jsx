@@ -4,23 +4,45 @@ import { useEffect } from 'react'
 import Transactions from './Transactions'
 import TransactionDetails from './TransactionDetail'
 import TransactionForm from './TransactionForm'
+import TransactionChart from './TransactionChart'
 import { Link } from 'react-router-dom'
 import {Routes, Route} from "react-router-dom"
 import './App.css'
 
 const App = () => {
   const [transactions, setTransactions] = useState([])
-  const [toggleDetails, setToggleDetails] = useState({ show: false, id:null})
-  const [toggleForm, setToggleForm]= useState(false)
-  const [edit, setEdit] = useState({ show: false, id:null})
+  
+  // BARCHART
+  const [userData, setUserData] = useState({
+    labels: [],
+    datasets: [{
+      label: "Amount Gained",
+      data: [],
+    }]
+  });
 
-useEffect (() => {
-  fetch("http://localhost:4000/transactions")
-  .then((res) => res.json())
-  .then((data) => {
-    setTransactions(data.transactions);
-  })
-}, [])
+  useEffect(() => {
+    fetch("http://localhost:4000/transactions")
+      .then((res) => res.json())
+      .then((data) => {
+        setTransactions(data.transactions);
+      })
+      .catch((error) => {
+        console.error("Error fetching transactions:", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    // Update userData state based on transactions
+    setUserData({
+      labels: transactions.map((data) => data.date),
+      datasets: [{
+        label: "Amount Gained or lost",
+        data: transactions.map((data) => data.dates),
+        backgroundColor:["red"]
+      }]
+    });
+  }, [transactions])
 
 return (
   <div>
@@ -43,39 +65,37 @@ return (
     <Transactions 
       transactions={transactions} 
       setTransactions={setTransactions}
-      setToggleDetails={setToggleDetails}
-      edit={edit}
-      setEdit={setEdit}
       />
       }
     />
     <Route 
-      path="/:id" 
-      element={
-    <TransactionDetails 
-      toggleDetails={toggleDetails}
-      />
+    path="/:id" 
+    element={
+    <div>
+      <TransactionDetails />
+      <div className='chart-details'>
+        <div style={{ width: 900 }}>
+
+        </div>
+      <TransactionChart chartData={userData} />
+      </div>
+    </div>
     }
     />
     <Route path="/edit/:id" element={
       <TransactionForm
-        edit={edit}
-        setEdit={setEdit}
         setTransactions={setTransactions}
-        setToggleForm={setToggleForm}
         />
     }
     />
      <Route path="/new" element={
       <TransactionForm
-        edit={edit}
-        setEdit={setEdit}
         setTransactions={setTransactions}
-        setToggleForm={setToggleForm}
       />
-    }
-      />
+    }      
+    />
   </Routes>
+    
   </div>
   )
 }
