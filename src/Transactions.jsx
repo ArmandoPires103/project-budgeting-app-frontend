@@ -12,7 +12,7 @@ const Transactions = ({ transactions, setTransactions }) => {
       total += transaction.amount
     });
     setTotalAmount(total)
-  }), [transactions]
+  }, [transactions])
 
   // CSS TOTAL CHANGER
 
@@ -35,18 +35,19 @@ const Transactions = ({ transactions, setTransactions }) => {
       .then((res) => res.json())
       .then((data) => setTransactions(data.transactions))
   }
+
   return (
-    <div className="transactions-container"> {/* Apply transactions container style */}
+    <div className="transactions-container"> 
       <h1 className='transaction-header'>Transactions</h1>
       <div className='total-amount'>
         Total Amount: <span className={`${totalNum}`}>{totalAmount}</span>
       </div>
       {transactions.map(({ id, item_name, amount, date}) => (
       <div className='transaction-item' key={id}>
-      <div className="transaction-all-details" > {/* Apply transaction item style */}
-          <h3 className="transaction-title">Item Name: {item_name}</h3> {/* Apply transaction title style */}
-          <p className="transaction-details">Date: {date}</p> {/* Apply transaction details style */}
-          <p className="transaction-details">Amount: {amount}</p> {/* Apply transaction details style */}
+      <div className="transaction-all-details" >
+          <h3 className="transaction-title">Item Name: {item_name}</h3>
+          <p className="transaction-details">Date: {date}</p> 
+          <p className="transaction-details">Amount: {amount}</p> 
       </div>
       <div className='transaction-buttons'>
           <Link to={`/${id}`}>

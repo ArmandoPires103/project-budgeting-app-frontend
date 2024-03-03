@@ -13,6 +13,7 @@ const TransactionDetails = () => {
         .then((data) => setTransactionsDetail(data.transaction))
     }, [id])
     if (!transactionDetail) return null
+    
     return (
       <div className="transaction-details-container">
         <h1 className="transaction-details-title">Transaction Details</h1>

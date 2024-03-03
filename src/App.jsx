@@ -14,12 +14,23 @@ const App = () => {
   
   // BARCHART
   const [userData, setUserData] = useState({
-    labels: [],
+    labels: transactions.map((data) => data.item_name),
     datasets: [{
       label: "Amount Gained",
-      data: [],
+      data: transactions.map((data) => data.amount),
     }]
   });
+  useEffect(() => {
+    // Update userData state based on transactions
+    setUserData({
+      labels: transactions.map((data) => data.item_name),
+      datasets: [{
+        label: "Amount Gained or lost",
+        data: transactions.map((data) => data.amount),
+        backgroundColor:["red"]
+      }]
+    });
+  }, [transactions])
 
   useEffect(() => {
     fetch("http://localhost:4000/transactions")
@@ -32,17 +43,6 @@ const App = () => {
       });
   }, []);
 
-  useEffect(() => {
-    // Update userData state based on transactions
-    setUserData({
-      labels: transactions.map((data) => data.date),
-      datasets: [{
-        label: "Amount Gained or lost",
-        data: transactions.map((data) => data.dates),
-        backgroundColor:["red"]
-      }]
-    });
-  }, [transactions])
 
 return (
   <div>
@@ -95,7 +95,7 @@ return (
     }      
     />
   </Routes>
-    
+  <TransactionChart chartData={userData} />
   </div>
   )
 }
