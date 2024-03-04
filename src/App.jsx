@@ -60,44 +60,19 @@ return (
   </header>
   
   <Routes>
-    <Route path="/"
-    element={
-    <Transactions 
-      transactions={transactions} 
-      setTransactions={setTransactions}
-      />
-      }
-    />
-    <Route 
-    path="/:id" 
-    element={
-    <div>
-      <TransactionDetails />
-      <div className='chart-details'>
-        <div style={{ width: 900 }}>
-
+        <Route path="/" element={<Transactions transactions={transactions} setTransactions={setTransactions} />} />
+        <Route path="/:id" element={<TransactionDetails />} />
+        <Route path="/edit/:id" element={<TransactionForm setTransactions={setTransactions} />} />
+        <Route path="/new" element={<TransactionForm setTransactions={setTransactions} />} />
+      </Routes>
+      
+      
+        <div className='chart-container'>
+          <TransactionChart chartData={userData} />
         </div>
-      <TransactionChart chartData={userData} />
-      </div>
+      
     </div>
-    }
-    />
-    <Route path="/edit/:id" element={
-      <TransactionForm
-        setTransactions={setTransactions}
-        />
-    }
-    />
-     <Route path="/new" element={
-      <TransactionForm
-        setTransactions={setTransactions}
-      />
-    }      
-    />
-  </Routes>
-  <TransactionChart chartData={userData} />
-  </div>
-  )
+  );
 }
 
-export default App
+export default App;
