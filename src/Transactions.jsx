@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Transactions.css'
-
+//  DEFINE FUNCTION TRANSACTIONS
 const Transactions = ({ transactions, setTransactions }) => {
   // A USESTATE TO HOLD TOTAL OF TRANSACTIONS
   const [totalAmount, setTotalAmount] = useState(0);
-  // USEEFFECT TO CALCULATE
+  // USEEFFECT HOOK TO RUN SOME CODE AFTER EVERY RENDER
   useEffect(() => {
+    // DECLARE A VARIABLE TOTAL AND INITIALIZE IT TO 0
     let total = 0;
+    // ITERATE THROUGH EACH TRANSACTIONS IN TRANSACTIONS ARRAY
     transactions.forEach(transaction => {
+      // ADD THE AMOUNT OF EACH TRANSACTION TO THE TOTAL
       total += transaction.amount
     });
+    // UPDATE THE TOTALAMOUNT STATE WITH THE CALCULATED TOTAL
     setTotalAmount(total)
+    // USEEFFECT WILL RUN WHENEVER THE TRANSACTIONS ARRAY CHANGES
   }, [transactions])
 
   // CSS TOTAL CHANGER
-
+  // DETERMINE THE CSS CLASS FOR THE TOTAL AMOUNT CASED ON TOTALAMOUNT
   let totalNum = ''
   if (totalAmount > 100) {
     totalNum = 'green'
@@ -25,17 +30,23 @@ const Transactions = ({ transactions, setTransactions }) => {
     totalNum = 'red'
   }
 
+  // IF THERE ARE NO TRANSACTIONS, RETURN NULL
   if (transactions.length === 0) return null;
 
+  // FUCNTION TO DELETE TRANSACTIONS
   function handleDelete(id) {
+    // DEFINE OPTIONS FOR THE FETCH REQUEST
     const options = {
       method: "DELETE"
     };
+    // SEND A DELETE REQUEST TO SERVER TO DELETE THE TRANSACTION WITH THE ID
     fetch (`http://localhost:4000/transactions/${id}`, options)
+      // PARSE THE RESPONSE AS JSON
       .then((res) => res.json())
+      // UPDATE THE TRANSACTIONS STATE WITH THE UPDATED DATA 
       .then((data) => setTransactions(data.transactions))
   }
-
+  // RENDER TRANSACTION COMPONENT
   return (
     <div className="transactions-container"> 
       <h1 className='transaction-header'>Transactions</h1>

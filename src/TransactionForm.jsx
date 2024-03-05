@@ -4,9 +4,11 @@ import { useNavigate, useParams } from 'react-router-dom'
 import './TransactionForm.css'
 
 const TransactionForm = ({setTransactions}) => {
+    // USENAVIGATE HOOK ALLOWS NAVIGATION WITHOUT PROPS
     const navigate = useNavigate();
+    // USE PARAMS HOOK ALLOWS ACCESS TO URL PARAMETERS
     const { id } = useParams();
-
+    // USESTATE HOOK TO MAKE FORM STATE
     const [transaction, setTransaction] = useState({
         item_name: "",
         amount: "",
@@ -15,14 +17,17 @@ const TransactionForm = ({setTransactions}) => {
         category: "",
         memo: ""
     })
+    // FUNCTION TO HANDLE INPUT CHANGE IN FORM
     function handleChange(e) {
         setTransaction({ ...transaction, [e.target.id]: e.target.value});
     }
-
+    // FUNCTION TO HANDLE FORM SUBMISSION
     function handleSubmit(e){
         e.preventDefault();
+        // CONVERT AMOUNT TO A NUMBER
         transaction.amount = +transaction.amount
         if (id) {
+          // IF ID EXISTS, PERFORM A PUT REQUEST TO UPDATE THE TRANSACTION
             const options = {
               method: "PUT",
               headers: { "Content-Type": "application/json" },
@@ -35,6 +40,7 @@ const TransactionForm = ({setTransactions}) => {
               .then(() => navigate("/"));
          
             } else {
+            // IF ID DOESN'T EXIST, PERFORM A POST REUEST TO CREATE A NEW TRANSACTION
             const options = {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -47,17 +53,18 @@ const TransactionForm = ({setTransactions}) => {
               .then(() => navigate("/"));
           }
         }
-
+    // FUNCTION HANDLE CANCELLATION OF FORM SUBMISSION
     function handleCancel(){
         navigate("/")
     }
-    
+    // USEEFFECT HOOK TO FETCH TRANSACTION DATA WHEN ID CHANGES
     useEffect(() => {
         if (id) {
           fetch(`http://localhost:4000/transactions/${id}`)
             .then((res) => res.json())
             .then((data) => setTransaction(data.transaction));
         } else {
+          // IF ID IS NOT PROVIDED RESET FORM
           setTransaction({
             item_name:"",
             amount:"",

@@ -10,16 +10,18 @@ import {Routes, Route} from "react-router-dom"
 import './App.css'
 
 const App = () => {
+  // DEFINE USESTATE FOR TRANSACTIONS
   const [transactions, setTransactions] = useState([])
   
-  // BARCHART
+  // DEFINE USESTATE FOR CHART DATA/ MADE A FORM
   const [userData, setUserData] = useState({
-    labels: transactions.map((data) => data.item_name),
+    labels: [],
     datasets: [{
       label: "Amount Gained",
-      data: transactions.map((data) => data.amount),
+      data: [],
     }]
   });
+  // UPDATE CHART DATA WHEN TRANSACTION CHANGES
   useEffect(() => {
     // Update userData state based on transactions
     setUserData({
@@ -31,7 +33,7 @@ const App = () => {
       }]
     });
   }, [transactions])
-
+  // FETCH TRANSACTIONS DATA FROM SERVER
   useEffect(() => {
     fetch("http://localhost:4000/transactions")
       .then((res) => res.json())
