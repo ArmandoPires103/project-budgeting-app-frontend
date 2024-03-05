@@ -51,6 +51,9 @@ To run the frontend locally:
 
 Contributions are welcome! If you'd like to contribute to this project, please fork the repository and submit a pull request. For major changes, please open an issue first to discuss what you would like to change.
 
+## Netlify
+https://luxury-banoffee-9f8cc6.netlify.app
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
