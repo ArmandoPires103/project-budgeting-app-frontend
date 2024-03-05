@@ -37,11 +37,13 @@
 }
   
 
-.chart-container {
-    width: 90vw ;
+.transaction-chart {
+    width: 70vw ;
+    height: 340px;
     display: flex;
     justify-content: center; 
     align-items: center;
-    margin:auto
+    margin:auto;
+    font-size: 12px
   }
   

@@ -59,7 +59,7 @@ const Transactions = ({ transactions, setTransactions }) => {
           <button className="transaction-button delete-button" onClick={() => handleDelete(id)}>Delete</button> 
       </div>
       </div>
-      ))} 
+    ))} 
       
     </div>
   );

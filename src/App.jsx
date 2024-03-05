@@ -25,9 +25,9 @@ const App = () => {
     setUserData({
       labels: transactions.map((data) => data.item_name),
       datasets: [{
-        label: "Amount Gained or lost",
+        label: "Amount Gained",
         data: transactions.map((data) => data.amount),
-        backgroundColor:["red"]
+        backgroundColor:["blue", "red", "red", "red"],
       }]
     });
   }, [transactions])
@@ -65,11 +65,9 @@ return (
         <Route path="/edit/:id" element={<TransactionForm setTransactions={setTransactions} />} />
         <Route path="/new" element={<TransactionForm setTransactions={setTransactions} />} />
       </Routes>
-      
-      
-        <div className='chart-container'>
-          <TransactionChart chartData={userData} />
-        </div>
+      {/* <div className='chart-container'> */}
+        <TransactionChart chartData={userData} />
+      {/* </div> */}
       
     </div>
   );
